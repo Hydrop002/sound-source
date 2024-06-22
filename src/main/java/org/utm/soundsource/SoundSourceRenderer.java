@@ -26,6 +26,7 @@ public class SoundSourceRenderer implements SoundEventListener {
 
     private final List<SoundSource> sources = Lists.newArrayList();
     private static final Random rand = new Random();
+    public boolean isRender = true;
 
     @Override
     public void onPlaySound(SoundInstance sound, WeighedSoundEvents accessor, float range) {
@@ -49,6 +50,7 @@ public class SoundSourceRenderer implements SoundEventListener {
                 it.remove();
                 continue;
             }
+            if (!this.isRender) continue;
             int width = font.width(source.text);
             stack.pushPose();
             stack.translate(source.pos.x - cameraPos.x, source.pos.y - cameraPos.y, source.pos.z - cameraPos.z);
